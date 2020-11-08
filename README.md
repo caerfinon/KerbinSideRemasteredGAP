@@ -10,9 +10,9 @@ Notes:
      - Complete site to site flightpalns as provided by the original Kerbin Side GAP mod are not included. 
 
 Install:
-- place files in the Gamedata/ContractPacks directroy 
+- place directory KerbinSideRemasteredGAP and all sub directories and files in your Gamedata/ContractPacks directroy (Create if it does not already exist) 
 
-Thanks and Ackknowledgements:
+Thanks and Acknowledgements:
 - Lots of inspiration and ideas from the following creators
 	- inigma - Contract Pack: Giving Aircraft a Purpose (GAP)- https://forum.kerbalspaceprogram.com/index.php?/topic/129208-contract-pack-giving-aircraft-a-purpose-gap-161-milestones-air-flights-coast-guard/
 	- Keniamin - Kerbin Side GAP - https://forum.kerbalspaceprogram.com/index.php?/topic/133545-13x-kerbin-side-gap/
