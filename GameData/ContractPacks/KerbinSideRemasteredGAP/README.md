@@ -26,6 +26,7 @@ Thanks and Acknowledgements:
 
 - Optional Mods	
 	- linuxgurugamer - Kramax Autopilot Continued - https://forum.kerbalspaceprogram.com/index.php?/topic/150846-19x-kramax-autopilot-continued-course-guidance-and-auto-land-for-spaceplanes/
+	- Ser - NavUtilities continued - https://forum.kerbalspaceprogram.com/index.php?/topic/162967-140-181-navutilities-continued-ft-hsi-instrument-landing-system-v072-2018-apr-1/
 	
 - Test Planes from KerbalX.com 
 	- swjr-swis - swjrjet UltraPlus Mk1 - https://kerbalx.com/swjr-swis/swjrjet-UltraPlus-Mk1 5 seats
