@@ -7,7 +7,8 @@ Notes:
 - Contains flightplans for Kramax Autopilot Continued mod
      - Flightplans provide landing information for the various runways at the individual bases
      - Runways where the AoA of the landing sequence proved to be too steep due to terrain were omitted from the flight plans.
-     - Complete site to site flightpalns as provided by the original Kerbin Side GAP mod are not included. 
+     - Complete site to site flightpalns as provided by the original Kerbin Side GAP mod are not included.
+- Contains runway definitions for NavUtilities continued mod   
 
 Install:
 - place directory KerbinSideRemasteredGAP and all sub directories and files in your Gamedata/ContractPacks directroy (Create if it does not already exist) 
@@ -20,7 +21,7 @@ Thanks and Acknowledgements:
 	- Nations States - Kerbin - https://www.nationstates.net/region=kerbin For providing the Geographical backdrop for the flight contracts. 
 
 - Required Mods
-	- Eskandare - Kerbins Side Remastered - https://forum.kerbalspaceprogram.com/index.php?/topic/174336-kerbin-side-remastered-101-173/
+	- Eskandare - Kerbin Side Remastered - https://forum.kerbalspaceprogram.com/index.php?/topic/174336-kerbin-side-remastered-101-173/
 	- AlphaAsh,ozraven,Ger_space - Kerbal Konstructs - https://forum.kerbalspaceprogram.com/index.php?/topic/151818-181-kerbal-konstructs-18115-15dec2019/
 	- nightingale - Contract Configurator - https://forum.kerbalspaceprogram.com/index.php?/topic/91625-1101-contract-configurator-v1305-2020-10-05/
 
