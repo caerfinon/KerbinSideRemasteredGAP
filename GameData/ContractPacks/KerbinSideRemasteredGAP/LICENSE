@@ -19,3 +19,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+NOTICES
+The UKTransponder part is derived from "Kerbal Engineering Redux" and is licensed under the GNU General Public License v3
+This applies to the files in the Assets/Parts directory
+- UKTransponder.cfg
+- UKTransponder.mu
+- EngineerChip.png
