@@ -1,5 +1,5 @@
 # KerbinSideRemasteredGAP  
-# Current Version: v2.0.1 
+# Current Version: v2.0.6 
 Contract Pack for Air flights to bases in Kerbin Side Remastered mod
 
 Notes:
@@ -78,10 +78,10 @@ Thanks and Acknowledgements:
 	- Ser - NavUtilities continued - https://forum.kerbalspaceprogram.com/index.php?/topic/162967-140-181-navutilities-continued-ft-hsi-instrument-landing-system-v072-2018-apr-1/
 	
 - Test Planes from KerbalX.com 
-	- swjr-swis - swjrjet UltraPlus Mk1 - https://kerbalx.com/swjr-swis/swjrjet-UltraPlus-Mk1 5 seats
-	- SpaceKraken - L-117 Visión - https://kerbalx.com/SpaceKraken/L-117-Vision 9 seats
-	- 4riqAerospace - Boeing 737-400 - https://kerbalx.com/4riqAerospace/Boeing-737-400 84 seats
-	- chadgaskerman - K-72 (Helicopter) - https://kerbalx.com/chadgaskerman/K-72 27 seats 
+	- Kerbin Side Remastered GAP KerbalX Hanger - https://kerbalx.com/hangars/130138
+	- Aircraft and rovers I find useful to use with this mod 
+	
+	
 
 	
 	
