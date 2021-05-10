@@ -1,5 +1,6 @@
 # KerbinSideRemasteredGAP  
-# Current Version: v2.0.7 
+# Current Version: v2.0.8.RC2
+# Contributors: Caerfinon, ColdJ 
 Contract Pack for Air flights to bases in Kerbin Side Remastered mod
 
 Notes:
@@ -9,7 +10,8 @@ Notes:
      - Flightplans provide landing information for the various runways at the individual bases
      - Runways where the AoA of the landing sequence proved to be too steep due to terrain were omitted from the flight plans.
      - Complete site to site flightpalns as provided by the original Kerbin Side GAP mod are not included.
-- Contains runway definitions for NavUtilities continued mod  
+- Contains runway definitions for NavUtilities continued mod
+- Contains runway definitions for use with MechJeb2 - Author: ColdJ   
 - Contains Kerbal contrstuct statics 
 	- modifications for Baikerbanur taxiways from runway to terminal
 	- original runway for KSC Extended mod at the TSC launch site that is no longer included in the mod
