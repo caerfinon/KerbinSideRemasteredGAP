@@ -1,7 +1,9 @@
 # KerbinSideRemasteredGAP  
 # Current Version: v2.1.0
-# Contributors: Caerfinon, ColdJ 
+# Contributors: Caerfinon, ColdJ
 Contract Pack for Air flights to bases in Kerbin Side Remastered mod
+
+Discord: https://discord.gg/HZJ9znHqYH
 
 Notes:
 - Contains flight contracts from KSC to Bases in the Kerbin Side Remastered mod.

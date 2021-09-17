@@ -1,4 +1,5 @@
-# KerbinSideRemasteredGAP
+# KerbinSideRemasteredGAP  
+Discord: https://discord.gg/HZJ9znHqYH
 Contract Pack for Air flights to bases in Kerbin Side Remastered mod
 
 FYI On GitHub The "<>CODE" is always the latest development and bug fixes prior to a release. Downloading it as a zip file is the equivalent of a "pre-release". 
