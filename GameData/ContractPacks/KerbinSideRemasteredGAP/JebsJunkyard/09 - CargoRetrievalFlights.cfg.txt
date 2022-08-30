@@ -1,0 +1,974 @@
+// -----------------------------------------------------------------
+//	CONTRACT:  JKSRGAP09-Cargo-Flights - Trans Kerbin Airlines - Trans Kerbin Airlines - Transport between one or two airports safely
+//	Author: Caerfinon 
+//	Credits:
+//	{
+//		Original GAP: Author - inigma
+//		Original Kerbin side GAP: Author - Keniamin 
+//	}
+// -----------------------------------------------------------------
+
+CONTRACT_TYPE
+{
+//CONTRACT DESCRIPTION
+	sortKey = JKSRGAP09
+	name = JKSRGAP09-Cargo-Flights
+	title = TKA Flight @/flightNumber - KSC to @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection) continuing to @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection3)
+	genericTitle = Fly cargo plane to retrieve surplus supplies for storage and then return to the KSC.
+	group = Trans Kerbin Airlines Cargo
+	agent = Trans Kerbin Airlines
+
+	description = Gus Kerman, head of Space Program Operaations at KSC, has asked us to provide a @/fltSize cargo flight from @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection) to @JKSRGAP:siteName.ElementAt(@/fltLocationSelection3) to retrieve a surplus load of @/fltReason. Gus is sending @/agentKerbalName to assist with cargo handling.  
+	genericDescription = Gus Kerman has asked us to provide a cargo flight to retrieve supplies and deliver them to AirBase Boneyard for storage. 
+	synopsis = Fly a cargo plane to the pick up airport and then to the destination airport and then return to the KSC 
+	notes = Aircaft must have 1-4 parts from the Payload category. This can be stock parts or any parts from mods that classify them as Payload   
+	completedMessage = Thanks for your assistance in helping move the @/fltReason to @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection3) safely guys. You're the best. I'm sure we will find a use for them somewhere&br;&br;-Gus Kerman&br;&br;Space Program Operations 
+
+//Contract Limits
+	maxCompletions = 0
+	maxSimultaneous = 1
+	autoAccept = false
+	declinable = true
+	cancellable = true
+	minExpiry = 1.0
+	maxExpiry = 1.0
+	deadline = 0
+
+//Contract Reward Modifiers
+	prestige = Significant
+	targetBody = Kerbin
+	
+//Contract Rewards
+	advanceFunds = (@/rewardFunds * 0.25 )
+	rewardFunds = 10000 * @/payloadParts  * Random(1.0, 1.15)
+	rewardReputation = 1.0 * @/payloadParts
+
+//Contract Penalties
+	failureFunds = (@/rewardFunds * 1.15) * Random(1.0, 1.25)
+	failureReputation = 2.0 * @/payloadParts
+	
+// -----------------------------------------------------------------	
+// REQUIREMENTS FOR CONTRACT TO APPEAR
+// -----------------------------------------------------------------
+	REQUIREMENT
+	{
+		name = CompleteContract
+		type = CompleteContract
+		title =  KAA Certification
+		contractType = JKSRGAP01-LetsStartAnAirline
+		minCount = 1
+	}
+
+// Requires that all JKSRGAP airports landing rights be completed
+	REQUIREMENT
+	{
+		name = Expression
+		type = Expression
+		title = Flight Progess must have completed all landing rights
+		expression = $jksrgapLandingRights > @JKSRGAP:siteCargoStart
+	}
+	
+//After mission is complete wait 3 days before offering it again	
+	REQUIREMENT
+	{
+		title = Cool down timer 3 days
+		name = CompleteContract
+		type = CompleteContract
+		minCount = 0
+		contractType = JKSRGAP09-Cargo-Flights
+		cooldownDuration = 1d
+	}
+	
+// -----------------------------------------------------------------	
+//DATA NODES TO PROCESS FOR CONTRACT USE
+// -----------------------------------------------------------------
+// flightNumber
+	DATA
+	{
+		type = string
+		flightNumber = @JKSRGAP:siteFlightNumBase.ElementAt(@/fltLocationSelection) + "C"
+		hidden = true
+																																																  
+	}
+
+//Contract Specific VesselParameterGroup Definition Key (to prevent conflict with other active contracts)
+	DATA
+	{
+		type = string
+		craft = JKSRGAPCargoFlight + @/flightNumber
+	}
+
+// Payloadparts
+	DATA
+	{
+		type = int
+		payloadParts = Random(1, 4) 
+	}
+
+
+// Source location of Cargo
+    // Exclude the Boneyard as a source
+	DATA
+	{
+		type = int
+		fltLocationSelection = Random(@JKSRGAP:siteComm2Start,$jksrgapFlightProgress) 																																		   
+	}
+
+//  Cargo Destination
+	DATA
+	{
+	     // The destination site for the cargo is always AirBase Boneyard
+		type = int
+		fltLocationSelection3 = 1
+	}
+
+	DATA
+	{
+		type = List<string>
+		hidden = true
+		fltReasons = ["Not-Rockomax Micronodes", "Small Nose Cones", "OX-STAT Photovoltaic Panels","Communotron 16s","2HOT Thermometers","Illuminator Mk1s","Pegasus I Mobility Enhancers","SENTINEL Infrared Telescopes", "Surface Scanning Modules", "M4435 Narrow-Band Scanners","Mk2-R Radial-Mount Parachutes","Communotron 88-88s","small Thermal Control Systems","CH-J3 Fly-By-Wire Avionics Hubs"]
+	}
+	
+	DATA
+	{
+		type = string
+		hidden = true
+		fltReason = @/fltReasons.Random()
+	}
+
+//Cargo Size fltSize
+
+	DATA
+	{
+		type = List<string>
+		
+		fltSizes = ["Null","tiny","small","medium","large"]
+		
+		hidden = true 
+	}
+	
+	DATA
+	{
+		type = string
+		
+		fltSize = @/fltSizes.ElementAt(@/payloadParts)
+		
+		hidden = true
+		
+	}
+
+
+//List of Possible ATC genders
+
+	DATA
+	{
+		type = List<string>
+		ATCGender = ["M" ,"F"]
+		hidden = true
+	}
+	
+// Merge random gender to Group siteATC type to select dialog image
+	DATA
+	{
+		type = string
+		site1ATCImage = "ATC_" + @/ATCGender.Random()
+		hidden = true
+		
+	}
+
+	DATA
+	{
+		type = string
+		site2ATCImage = "ATC_" + @/ATCGender.Random()
+		hidden = true
+	}
+	
+	DATA
+	{
+		type = string
+		site3ATCImage = "ATC_" + @/ATCGender.Random()
+		hidden = true
+	}
+
+//Rank List
+	DATA
+	{
+		type = List<string>
+		
+		agentTitleList = [ "LM " , "QM "]
+		
+	}
+
+// Randomly select 0 (male) or 1 (female)
+	DATA
+	{
+		type = int
+		genderType = Random(0,1)
+	}
+
+Greate a bool for gender	
+	DATA
+    {
+        type = bool
+		isFemale = @/genderType == 1
+    }
+	
+	
+	DATA
+	{
+		type = string
+		agentTitle = @/agentTitleList.Random()
+		agentKerbalName = @/agentTitle + RandomKerbalName(@/isFemale ? Female : Male)
+		hidden = true
+		
+	}	
+		
+	DATA
+	{
+		type = List<Kerbal>
+		kerbalAgent = [ NewKerbal( @/isFemale ? Female : Male, @/agentKerbalName, "Tourist" ) ]
+		hidden = true
+		
+	}
+	
+
+// -----------------------------------------------------------------
+//BEHAVIOURS TO DO WHEN CREATING CONTRACT
+// -----------------------------------------------------------------
+
+	BEHAVIOUR
+	{
+		name = SpawnPassengers
+		type = SpawnPassengers
+		kerbal = @/kerbalAgent.ElementAt(0)
+		kerbalType = Tourist
+		removePassengers = true
+	}
+
+// Eliminate craft on contract failure to prevent tourist spam in Astronaut Complex	
+	
+	BEHAVIOUR
+	{
+		name = DestroyVessel
+		type = DestroyVessel
+		onState = CONTRACT_FAILED
+		vessel = @/craft
+	}
+
+	BEHAVIOUR
+	{
+		name = WaypointGenerator
+		type = WaypointGenerator
+
+		WAYPOINT
+		{
+			name = KSC Runway
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/Airport
+			latitude = @JKSRGAP:siteLAT.ElementAt(0)
+			longitude = @JKSRGAP:siteLON.ElementAt(0)
+			altitude = 0
+		}
+
+		WAYPOINT
+		{
+			name = the Air Terminal
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/terminal
+			altitude = 0
+			latitude = @JKSRGAP:terminalLAT.ElementAt(0)
+			longitude = @JKSRGAP:terminalLON.ElementAt(0)
+			parameter = RequestLandingLaunch
+			
+		}
+
+		WAYPOINT
+		{
+			name = @JKSRGAP:siteName.ElementAt(@/fltLocationSelection)
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/Airport
+			altitude = 0
+			latitude = @JKSRGAP:siteLAT.ElementAt(@/fltLocationSelection)
+			longitude = @JKSRGAP:siteLON.ElementAt(@/fltLocationSelection)
+		}
+
+		WAYPOINT
+		{
+			name = the Air Terminal
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/terminal
+			altitude = 0
+			latitude = @JKSRGAP:terminalLAT.ElementAt(@/fltLocationSelection)
+			longitude = @JKSRGAP:terminalLON.ElementAt(@/fltLocationSelection)
+			parameter = RequestLandingSite2
+		}
+
+		WAYPOINT
+		{
+			name = @JKSRGAP:siteName.ElementAt(@/fltLocationSelection3)
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/Airport
+			altitude = 0
+			latitude = @JKSRGAP:siteLAT.ElementAt(@/fltLocationSelection3)
+			longitude = @JKSRGAP:siteLON.ElementAt(@/fltLocationSelection3)
+		}
+		WAYPOINT
+		{
+			name = the Airport Terminal
+			icon = ContractPacks/JNSQ-KSRGAP/Assets/Icons/terminal
+			altitude = 0
+			latitude = @JKSRGAP:terminalLAT.ElementAt(@/fltLocationSelection3)
+			longitude = @JKSRGAP:terminalLON.ElementAt(@/fltLocationSelection3)
+			parameter = RequestLandingSite3
+		}
+
+	}
+
+//Contract Dialogs	
+	BEHAVIOUR
+	{
+		name = DialogBox
+		type = DialogBox
+
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestTakeoffLaunch
+			position = CENTER
+			
+			TEXT
+			{
+				text = Hey guys, thanks for doing this. These parts are going to prove to be important to the program. You are cleared for depature and immediate take off. Good Hunting. Fly safe.
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			INSTRUCTOR
+			{
+				name = Strategy_MechanicGuy
+				showName = true
+				textColor = #BADA55
+				animation = true_smileA
+			}
+			
+		}
+		
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestLandingSite2
+			
+			position = CENTER
+			
+			TEXT
+			{
+				text = Trans Flight, we have you on approach. You are cleared for landing. On touchdown proceed to the indicated airport terminal for cargo loading. Directions have been transmited to you.
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			IMAGE
+			{
+				url = ContractPacks/JNSQ-KSRGAP/Assets/Characters/@/site2ATCImage
+				characterName = Local Air Traffic Control
+			}
+			
+		}
+		
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestTakeoffSite2
+			
+			position = CENTER
+			
+			TEXT
+			{
+				text = Trans Flight, you are cleared for departure. Please proceed to the runway for immediate takeoff  
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			IMAGE
+			{
+				url = ContractPacks/JNSQ-KSRGAP/Assets/Characters/@/site2ATCImage
+				characterName = Local Air Traffic Control
+			}
+			
+		}
+		
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestLandingSite3
+			
+			position = CENTER
+			
+			TEXT
+			{
+				text = Trans Flight, we have you on approach. You are cleared for landing. On touchdown proceed to the indicated airport terminal for cargo unloading. Directions have been transmited to you.
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			IMAGE
+			{
+				url = ContractPacks/JNSQ-KSRGAP/Assets/Characters/@/site3ATCImage
+				characterName = Local Air Traffic Control
+			}
+			
+		}
+		
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestTakeoffSite3
+			
+			position = CENTER
+			
+			TEXT
+			{
+				text = Trans Flight, you are cleared for departure. Please proceed to the runway for immediate takeoff  
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			IMAGE
+			{
+				url = ContractPacks/JNSQ-KSRGAP/Assets/Characters/@/site3ATCImage
+				characterName = Local Air Traffic Control
+			}
+			
+		}
+		
+		DIALOG_BOX
+		{
+			condition = PARAMETER_COMPLETED
+			parameter = RequestLandingLaunch
+			
+			position = CENTER
+			
+			TEXT
+			{
+				text = Welcome back guys! After you clear the terminal meet me at the OutBack tavern. First round is on me!  
+				fontSize = 20
+				textColor = #BADA55
+			}
+			
+			INSTRUCTOR
+			{
+				name = Strategy_MechanicGuy
+				showName = true
+				textColor = #BADA55
+				animation = true_smileA
+			}
+			
+		}
+// failed misssion dialog
+		DIALOG_BOX
+		{
+			condition = CONTRACT_FAILED
+			position = CENTER
+			title = <b>Sometimes Things Go Wrong</b>
+			titleColor = #B00B1E
+			
+			TEXT
+			{
+				text = Guys? Please respond. Do you copy? You're not on the radar..... Come in guys!  
+				fontSize = 20
+				textColor = #B00B1E
+			}
+			
+			INSTRUCTOR
+			{
+				name = Strategy_MechanicGuy
+				showName = true
+				textColor = #BADA55
+				animation = false_sadA
+			}
+			
+		}
+
+	}
+
+
+
+
+
+// -----------------------------------------------------------------
+//PARAMETERS FOR CONTRACT COMPLETION
+// -----------------------------------------------------------------
+//
+//Craft definition
+	PARAMETER
+	{
+		name = Initialization
+		type = VesselParameterGroup
+		title = Your aircraft must meet all requirements
+		define = @/craft
+		completeInSequence = true
+		dissassociateVesselsOnContractFailure = false
+
+		PARAMETER
+		{
+			name = HasCrew
+			type = HasCrew
+			title = have two certified pilots
+			trait = Pilot
+			minCrew = 2
+			disableOnStateChange = false
+			hideChildren = true
+		}
+
+		PARAMETER
+		{
+			name = PartValidation
+			type = PartValidation
+			title = have @/payloadParts part(s) from the payload category 
+			minCount = @/payloadParts
+			category = Payload
+			disableOnStateChange = false
+			hideChildren = true
+		}
+		
+		PARAMETER
+		{
+			name = PartValidation
+			type = PartValidation
+			title = have wings
+							
+			category = Aero
+			disableOnStateChange = false
+			hideChildren = true
+		}
+		
+
+
+		PARAMETER
+		{
+			name = HasCrewCapacity
+			type = HasCrewCapacity
+			title = have seating for crew and @/agentKerbalName
+			minCapacity = 3
+			  
+			disableOnStateChange = false
+			
+		}
+		
+		//Passenger Manifest - Load Passengers
+		PARAMETER
+		{
+
+			name = HasPassengers
+			type = HasPassengers
+			title = Have @/agentKerbalName on board
+			kerbal = @/kerbalAgent.ElementAt(0)
+			hideChildren = true
+		}
+		
+	}
+	
+//Launch Site
+	PARAMETER
+	{
+		name = LaunchSite
+		type = VesselParameterGroup
+		title = begin at the KSC Runway
+		vessel = @/craft
+		completeInSequence = true
+		disableOnStateChange = true
+		hideVesselName = true
+		
+		PARAMETER
+		{
+			name = VisitWaypoint
+			type = VisitWaypoint
+			index = 0
+			distance = 1600
+			hideOnCompletion = false
+			completeInSequence = true
+			disableOnStateChange = false
+			hideChildren = true
+		}
+		
+	}
+
+	PARAMETER
+	{
+		name = RequestTakeoffLaunch
+		type = Duration
+		duration = 5s
+		preWaitText = request clearance for takeoff:
+		waitingText = requesting clearance for takeoff: 
+		completionText = be cleared for takeoff
+		completeInSequence = true
+		disableOnStateChange = true
+	}
+
+// -----------------------------------------------------------------	
+// Trip to Cargo Pick up
+// -----------------------------------------------------------------
+
+	PARAMETER
+	{
+		name = RequestLandingSite2
+		type = VesselParameterGroup
+		vessel = @/craft
+		completeInSequence = true
+		disableOnStateChange = true
+		hideChildren = true
+		hidden = true
+		
+		PARAMETER
+		{
+			name = VisitWaypoint
+			type = VisitWaypoint
+			index = 2
+			distance = 19000
+			hideOnCompletion = true
+			completeInSequence = true
+			disableOnStateChange = false
+			hideChildren = true
+			hidden = true
+		}
+	}
+
+	PARAMETER
+	{
+		name = LandingSite2
+		type = VesselParameterGroup
+		title = complete flight to the @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection) runway
+		notes = land and move to within 50 meters of the terminal
+		vessel = @/craft
+		disableOnStateChange = true
+		hideVesselName = true
+		completeInSequence = true
+
+		PARAMETER
+		{
+			name = Site2Terminal
+			type = VisitWaypoint
+			title = then taxi to the terminal
+			index = 3
+			distance = 50
+			horizontalDistance = 50
+			showMessages =  true
+			disableOnStateChange = false
+		}
+
+		PARAMETER
+		{
+			name = ReachState
+			type = ReachState
+			title = and stop your aricraft
+			targetBody = Kerbin
+			situation = LANDED
+			maxSpeed = 0.0
+			disableOnStateChange = false
+			hideChildren = true
+		}
+		PARAMETER
+		{
+			name = TerminalrampSite2
+			type = Duration
+			
+			duration = 10s
+			preWaitText = wait for terminal ramp:
+			waitingText = ramp being positioned: 
+			completionText = ramp is in place begin deplaning  
+
+			completeInSequence = true
+			disableOnStateChange = false
+		}
+	}
+	
+	PARAMETER
+	{
+		name = All
+		type = All
+		title = complete cargo exchange
+		disableOnStateChange = true
+		completeInSequence = true
+			
+		PARAMETER
+		{
+			name = ReachState
+			type = ReachState
+			situation = LANDED
+			maxSpeed = 0.0
+			disableOnStateChange = false
+			hideChildren = true
+			hidden = true
+			completeInSequence = true
+		}		
+	
+		PARAMETER
+		{
+			name = Duration
+			type = Duration
+			duration = 30s
+			preWaitText = wait for cargo loading to complete for:
+			waitingText = cargo loading underway now:
+			completionText = cargo loading completed!
+			startCriteria = PARAMETER_COMPLETION
+			parameter = LandingSite2
+		}
+	}
+
+	PARAMETER
+	{
+		name = RequestTakeoffSite2
+		type = Duration		
+		duration = 5s
+		preWaitText = request clearance for takeoff:
+		waitingText = requesting clearance for takeoff: 
+		completionText = be cleared for takeoff
+		completeInSequence = true
+		disableOnStateChange = true
+	}
+	
+// -----------------------------------------------------------------	
+// Trip to Cargo Drop off
+// -----------------------------------------------------------------
+
+	PARAMETER
+	{
+		name = RequestLandingSite3
+		type = VesselParameterGroup
+		vessel = @/craft
+		completeInSequence = true
+		disableOnStateChange = true
+		hideChildren = true
+		hidden = true
+		
+		PARAMETER
+		{
+			name = VisitWaypoint
+			type = VisitWaypoint
+			index = 4
+			distance = 19000
+			hideOnCompletion = true
+			completeInSequence = true
+			disableOnStateChange = false
+			hideChildren = true
+			hidden = true
+		}
+	}
+
+	PARAMETER
+	{
+		name = LandingSite3
+		type = VesselParameterGroup
+		title = complete flight to the @JKSRGAP:siteFullName.ElementAt(@/fltLocationSelection3) runway
+		notes = land and move to within 50 meters of the terminal
+		vessel = @/craft
+		disableOnStateChange = true
+		hideVesselName = true
+		completeInSequence = true
+
+		PARAMETER
+		{
+			name = Site3Terminal
+			type = VisitWaypoint
+			title = then taxi to the terminal
+			index = 5
+			distance = 50
+			horizontalDistance = 50
+			showMessages =  true
+			disableOnStateChange = false
+		}
+		PARAMETER
+		{
+			name = ReachState
+			type = ReachState
+			title = and stop your aircraft
+			targetBody = Kerbin
+			situation = LANDED
+			maxSpeed = 0.0
+			disableOnStateChange = false
+			hideChildren = true
+		}	
+
+		PARAMETER
+		{
+			name = TerminalrampSite3
+			type = Duration
+			
+			duration = 10s
+			preWaitText = wait for terminal ramp:
+			waitingText = ramp being positioned: 
+			completionText = ramp is in place begin deplaning  
+
+			completeInSequence = true
+			disableOnStateChange = true
+		}
+	}
+	
+	PARAMETER
+	{
+		name = All
+		type = All
+		title = complete cargo exchange
+		disableOnStateChange = true
+		completeInSequence = true
+			
+		PARAMETER
+		{
+			name = ReachState
+			type = ReachState
+			situation = LANDED
+			maxSpeed = 0.0
+			disableOnStateChange = false
+			hideChildren = true
+			hidden = true
+			completeInSequence = true
+		}
+		
+		PARAMETER
+		{
+			name = Duration
+			type = Duration
+			duration = 30s
+			preWaitText = wait for cargo offloading to complete for:
+			waitingText = cargo offloading underway now:
+			completionText = cargo offloading completed!
+			startCriteria = PARAMETER_COMPLETION
+			parameter = LandingSite3
+		}		
+	}
+	
+	PARAMETER
+	{
+		name = RequestTakeoffSite3
+		type = Duration		
+		duration = 5s
+		preWaitText = request clearance for takeoff:
+		waitingText = requesting clearance for takeoff: 
+		completionText = be cleared for takeoff
+		completeInSequence = true
+		disableOnStateChange = true
+	}
+	
+// -----------------------------------------------------------------	
+// Retun Trip to KSC
+// -----------------------------------------------------------------
+
+	PARAMETER
+	{
+		name = RequestLandingLaunch
+		type = VesselParameterGroup
+		vessel = @/craft
+		completeInSequence = true
+		disableOnStateChange = true
+		hideChildren = true
+		hidden = true
+		
+		PARAMETER
+		{
+			name = VisitWaypoint
+			type = VisitWaypoint
+			index = 0
+			distance = 19000
+			hideOnCompletion = true
+			completeInSequence = true
+			disableOnStateChange = false
+			hideChildren = true
+			hidden = true
+		}
+	}
+
+	PARAMETER
+	{
+		name = LandingSite
+		type = VesselParameterGroup
+		title = complete flight to the KSC runway
+		notes = land and move to within 50 meters of the terminal
+		vessel = @/craft
+		disableOnStateChange = true
+		completeInSequence = true
+		hideVesselName = true
+			
+		PARAMETER
+		{
+			name = KSCTerminal
+			type = VisitWaypoint
+			title = then taxi to the terminal
+			index = 1
+			distance = 50
+			horizontalDistance = 50
+			showMessages =  true
+			disableOnStateChange = false
+		}
+			
+		PARAMETER
+		{
+			name = ReachState
+			type = ReachState
+			title = and stop your aircraft
+			targetBody = Kerbin
+			situation = LANDED
+			maxSpeed = 0.0
+			disableOnStateChange = false
+			hideChildren = true
+		}
+		
+		PARAMETER
+		{
+			name = TerminalrampKSC
+			type = Duration
+			
+			duration = 10s
+			preWaitText = wait for terminal ramp:
+			waitingText = ramp being positioned: 
+			completionText = ramp is in place begin deplaning  
+
+			completeInSequence = true
+			disableOnStateChange = false
+		}
+	}
+
+//Recovery Parameter - Craft & Kerbal Safety Check
+
+	PARAMETER
+	{
+		name = All
+		type = All
+		title = safely
+		completeInSequence = true
+		disableOnStateChange = true
+		
+		PARAMETER
+		{
+			name = VesselNotDestroyed
+			type = VesselNotDestroyed
+			title = without destroying your aircraft
+			vessel = @/craft
+		}
+
+		PARAMETER
+		{
+			name = KerbalDeaths
+			type = KerbalDeaths
+			title = or killing anyone
+			vessel = @/craft
+			hideChildren = true
+		}
+	}
+
+//Recovery Parameter - Recover Kerbals
+
+	PARAMETER
+	{
+		name = RecoverVessel
+		type = RecoverVessel
+		title = and recover your aircraft													
+		completeInSequence = true
+	}
+
+// -----------------------------------------------------------------
+// END OF CONTRACT
+// -----------------------------------------------------------------
+}
+
+
+
+	
+
+
+
+	
