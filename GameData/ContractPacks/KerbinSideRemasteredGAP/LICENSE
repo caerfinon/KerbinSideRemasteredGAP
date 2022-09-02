@@ -24,10 +24,18 @@ NOTICES:
 
 The UKTransponder part is derived from "Kerbal Engineering Redux" v1.1.9.0 and is licensed under GPL-3.0 License
 Authors: CYBUTEK, jrbudda
+
 This applies to the files in the Assets/Parts directory
 - UKTransponder.cfg
 - UKTransponder.mu
 - EngineerChip.png
 
-The graphic kerbalspacecenterwelcome.png is from "Kerbal Cities Pack" v0.3.0 and is licensed under the MIT License
+Various parts from "Kerbal Cities Pack" v0.3.0 and is licensed under the MIT License
 Authors: lemlur, fast_de_la_spee
+
+This applies to the files in the KerbalCities/roads directory
+- The graphic kerbalspacecenterwelcome.png adapted for GAP mission Dialogs
+- Statics and associated graphics for signs
+   - leaveenterKSC
+   - low_spacecraft
+   - low_aircraftsign
