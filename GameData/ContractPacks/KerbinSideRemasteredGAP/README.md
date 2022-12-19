@@ -1,5 +1,5 @@
 # KerbinSideRemasteredGAP  
-# Current Version: v2.1.6
+# Current Version: v2.1.7
 # Contributors: Caerfinon, ColdJ
 Contract Pack for Air flights to bases in Kerbin Side Remastered mod
 
