@@ -13,5 +13,15 @@ Required Mods:
 
 Optional Mods	(patch support provided):
 - linuxgurugamer - Kramax Autopilot Continued - https://forum.kerbalspaceprogram.com/index.php?/topic/150846-19x-kramax-autopilot-continued-course-guidance-and-auto-land-for-spaceplanes/
-- Ser - NavUtilities continued - https://forum.kerbalspaceprogram.com/index.php?/topic/162967-140-181-navutilities-continued-ft-hsi-instrument-landing-system-v072-2018-apr-1/
+- Ser - NavUtilities Updated - https://spacedock.info/mod/2879/NavUtilities%20Updated
+
+## Note: 
+Check the the README in GameData\ContractPacks\KerbinSideRemasteredGAP\Config Replacements\ for additional mode configs that need to be copied
+
+### Supported mods are:
+
+ComNetConstellations - https://spacedock.info/mod/1309/CommNet%20Constellation
+WaypointManager - https://spacedock.info/mod/3107/WaypointManager
+
+
 
