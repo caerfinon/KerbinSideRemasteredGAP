@@ -20,8 +20,8 @@ Check the the README in GameData\ContractPacks\KerbinSideRemasteredGAP\Config Re
 
 ### Supported mods are:
 
-ComNetConstellations - https://spacedock.info/mod/1309/CommNet%20Constellation
-WaypointManager - https://spacedock.info/mod/3107/WaypointManager
+- ComNetConstellations - https://spacedock.info/mod/1309/CommNet%20Constellation
+- WaypointManager - https://spacedock.info/mod/3107/WaypointManager
 
 
 
