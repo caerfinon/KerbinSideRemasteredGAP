@@ -12,4 +12,9 @@ cnc_settings.cfg
 // Use the in-game settings of WaypointManager to Import "KSRGAP"
 
 CustomWaypoints.KSRGAP.cfg
+
+//NavInstruments
+// Copy to GameData\NavInstruments\ModueManagerCfgs\
+
+KerbinSideRemastered.cfg
  
