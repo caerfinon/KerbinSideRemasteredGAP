@@ -11,6 +11,54 @@
 
 WAYPOINT
 {
+	name = Aracama Airport
+	celestialName = Kerbin
+	latitude = -2.2195696830749498
+	longitude = -88.037017822265597
+	navigationId = ee24466b-f1ff-4c37-b03a-23de5bdc5e08
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = 1.5631940186722204E-13
+	index = 39
+	seed = 747
+}
+WAYPOINT
+{
+	name = Foldrenview Airport
+	celestialName = Kerbin
+	latitude = 29.114690780639599
+	longitude = -95.633804321289105
+	navigationId = 75f57ffc-29e2-4e97-ba23-d8ba4fe296a3
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = -0.00023230002261698246
+	index = 40
+	seed = 384
+}
+WAYPOINT
+{
+	name = Laestron Airport
+	celestialName = Kerbin
+	latitude = 23.947807312011701
+	longitude = -39.610973358154297
+	navigationId = f0572613-6fc8-49f8-b42b-2194e526bbc2
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = 0
+	index = 41
+	seed = 384
+}
+WAYPOINT
+{
+	name = Osealis Airport
+	celestialName = Kerbin
+	latitude = 6.4098668098449698
+	longitude = -62.123771667480497
+	navigationId = 9ef826ba-20cd-4193-9ada-de929fd42376
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = -3.979039320256561E-13
+	index = 42
+	seed = 241
+}
+WAYPOINT
+{
 	name = Kola Island
 	celestialName = Kerbin
 	latitude = -4.1596856119999996
@@ -107,6 +155,18 @@ WAYPOINT
 }
 WAYPOINT
 {
+	name = Baikerbanur // Parallax in use
+	celestialName = Kerbin
+	latitude = 20.572227478027301
+	longitude = -146.53112792968801
+	navigationId = d4dc5cb6-fdd6-4ef5-8b53-6f2a7cae094f
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = 3.979039320256561E-13
+	index = 28
+	seed = 241
+}
+WAYPOINT
+{
 	name = South Field
 	celestialName = Kerbin
 	latitude = -47.006515499999999
@@ -167,6 +227,18 @@ WAYPOINT
 }
 WAYPOINT
 {
+	name = South Lake
+	celestialName = Kerbin
+	latitude = -37.283378599999999
+	longitude = 52.562286380000003
+	navigationId = 569082ce-5b18-41a1-afdc-c38f27bd6368
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
+	altitude = 2.8421709430404007E-14
+	index = 34
+	seed = 384
+}
+WAYPOINT
+{
 	name = Hazard Shallows
 	celestialName = Kerbin
 	latitude = -14.226844789999999
@@ -211,17 +283,5 @@ WAYPOINT
 	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
 	altitude = -1.1368683772161603E-13
 	index = 38
-	seed = 241
-}
-WAYPOINT
-{
-	name = Baikerbanur
-	celestialName = Kerbin
-	latitude = 20.572227478027301
-	longitude = -146.53112792968801
-	navigationId = d4dc5cb6-fdd6-4ef5-8b53-6f2a7cae094f
-	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Airport
-	altitude = 3.979039320256561E-13
-	index = 28
 	seed = 241
 }
