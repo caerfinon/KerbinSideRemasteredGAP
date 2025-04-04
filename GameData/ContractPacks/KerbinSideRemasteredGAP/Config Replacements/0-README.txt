@@ -1,5 +1,6 @@
 // The files here are replacement configurations for other mods. 
-// You will need to copy them to the directory specified to enable them 
+// You will need to copy them to the directory specified to enable them
+// Once copied to the new directory remove .txt extension (delete any previous copy of the file already there) 
 
 // ComNetConstellations 
 // - Copy to GameGata\CommNetConstellation
