@@ -10,6 +10,8 @@ Required Mods:
 - Eskandare - Kerbin Side Remastered - https://forum.kerbalspaceprogram.com/index.php?/topic/174336-kerbin-side-remastered-101-173/
 - AlphaAsh,ozraven,Ger_space - Kerbal Konstructs - https://forum.kerbalspaceprogram.com/index.php?/topic/151818-181-kerbal-konstructs-18115-15dec2019/
 - nightingale - Contract Configurator - https://forum.kerbalspaceprogram.com/index.php?/topic/91625-1101-contract-configurator-v1305-2020-10-05/
+- Omega482 - Omega's Stockalike Structures: No Textures Required - v 0.0.12 - https://forum.kerbalspaceprogram.com/topic/169891-wip-omega482s-dev-thread-omegas-stockalike-structures-no-textures-required-alpha-now-available/
+- Ger_space - Kerbinside Core - v 1.5.1 - Use the version on CKAN -     
 
 Optional Mods	(patch support provided):
 - linuxgurugamer - Kramax Autopilot Continued - https://forum.kerbalspaceprogram.com/index.php?/topic/150846-19x-kramax-autopilot-continued-course-guidance-and-auto-land-for-spaceplanes/
