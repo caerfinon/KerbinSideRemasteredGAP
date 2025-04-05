@@ -14,7 +14,8 @@ These airports are created with KK statics from KerbinsSideRemastered and two ad
 - KerbinSide Core 
 - Omega's Stockalike Structures
 
-The introduction of the new airports will reorder contracts currently active. You should complete any outstanding KSRGAP contracts prior to upgrading.    
+The introduction of the new airports will reorder contracts currently active. You should complete any outstanding KSRGAP contracts prior to upgrading.
+    
 ## Notes:
 - Contains flight contracts from KSC to Bases in the Kerbin Side Remastered mod.
 - Contains flightplans for Kramax Autopilot Continued mod
