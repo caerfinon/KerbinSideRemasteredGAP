@@ -285,3 +285,51 @@ WAYPOINT
 	index = 38
 	seed = 241
 }
+WAYPOINT
+{
+	name = Aleutia Helipad
+	celestialName = Kerbin
+	latitude = -51.782257080078097
+	longitude = 171.112228393555
+	navigationId = 8dddec27-923e-4250-a248-12548c6d7a6e
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Helipad
+	altitude = -3.979039320256561E-13
+	index = 43
+	seed = 241
+}
+WAYPOINT
+{
+	name = Dusty Island Helipad
+	celestialName = Kerbin
+	latitude = -9.7849407196044904
+	longitude = 143.591796875
+	navigationId = b75f2c17-5920-4795-848b-a6923223da3b
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Helipad
+	altitude = -1.0658141036401503E-14
+	index = 44
+	seed = 241
+}
+WAYPOINT
+{
+	name = Gatun Helipad
+	celestialName = Kerbin
+	latitude = 47.4779663085938
+	longitude = 69.207550048828097
+	navigationId = 3e2530d5-fa91-4f53-83ca-96c765cd5c69
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Helipad
+	altitude = -3.5527136788005009E-14
+	index = 45
+	seed = 241
+}
+WAYPOINT
+{
+	name = Miraflores Helipad
+	celestialName = Kerbin
+	latitude = 46.4473686218262
+	longitude = 89.366546630859403
+	navigationId = f046da7b-2875-4240-8839-55a9b047f272
+	icon = ContractPacks/KerbinSideRemasteredGAP/Assets/Icons/Helipad
+	altitude = 1.0658141036401503E-14
+	index = 46
+	seed = 241
+}
