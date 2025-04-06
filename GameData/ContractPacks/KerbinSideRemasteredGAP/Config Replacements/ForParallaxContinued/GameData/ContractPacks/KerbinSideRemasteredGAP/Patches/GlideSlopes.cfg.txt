@@ -1,5 +1,0 @@
-// NAVUTILS Glideslope for Kerbin Side Remastered GAP flightplans
-Glideslope
-{
-	glideslope = 4
-}
