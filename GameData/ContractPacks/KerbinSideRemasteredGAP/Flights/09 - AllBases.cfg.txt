@@ -1,0 +1,120 @@
+// -----------------------------------------------------------------
+//	CONTRACT:  AllBasesOpen - Trans Kerbin Airlines - Trans Kerbin Airlines Inspections - Start Open
+//	Author: Caerfinon 
+//	Credits: 
+//	{
+//		Original GAP: Author - inigma
+//		Original Kerbin side GAP: Author - Keniamin 
+//		expression requirements: from from "Field Research" - Author - nightingale
+//	}
+// -----------------------------------------------------------------
+CONTRACT_TYPE
+{
+//CONTRACT DESCRIPTION
+	
+	sortKey = 01
+	name = AllBasesOpen
+	title = All Bases Open
+	group = KSRGAP
+	agent = Kerbin Side Remastered GAP
+
+	description =  Set All Bases Open
+	genericDescription = Set All Bases Open
+	synopsis = Set All Bases Open
+    completedMessage = AllBasesOpen has set flightprogress to: @KSRGAP:airportProgressLimit + 1	
+	
+//Contract Limits
+	maxCompletions = 0
+	maxSimultaneous = 1
+	autoAccept = true
+	declinable = false
+	cancellable = true
+	minExpiry = 1.0
+	maxExpiry = 1.0
+	deadline = 0
+
+//Contract Reward Modifiers
+	prestige = Trivial
+	targetBody = Kerbin
+	
+//Contract Rewards
+	advanceFunds = 0
+	rewardFunds = 0
+	rewardReputation = 0
+	rewardScience = 0
+
+//Contract Penalties
+	failureFunds = 0
+	failureReputation = 0
+// -----------------------------------------------------------------	
+// REQUIREMENTS FOR CONTRACT TO APPEAR
+// -----------------------------------------------------------------	
+//
+	REQUIREMENT
+	{
+		name = CompleteContract
+		type = CompleteContract
+		title =  KAA Certification
+		contractType = KSRGAP01-LetsStartAnAirline
+		minCount = 1
+	}
+	
+	REQUIREMENT
+	{
+		name = Expression
+		type = Expression
+		title = Flight Progess Check Has Not Finished
+		expression = $ksrgapFlightProgress <= @KSRGAP:airportProgressLimit
+	}
+
+// -----------------------------------------------------------------	
+//DATA NODES TO PROCESS FOR CONTRACT USE
+// -----------------------------------------------------------------
+
+
+
+// -----------------------------------------------------------------
+//BEHAVIOURS TO DO WHEN CREATING CONTRACT
+// -----------------------------------------------------------------
+
+// Persistent Storage routines
+	BEHAVIOUR
+	{
+		name = Expression
+		type = Expression
+
+		// On success set the progress counter
+		CONTRACT_COMPLETED_SUCCESS
+		{
+			type = int
+			ksrgapFlightProgress = @KSRGAP:airportProgressLimit + 1
+			
+		}
+	}
+
+// -----------------------------------------------------------------
+//PARAMETERS FOR CONTRACT COMPLETION
+// -----------------------------------------------------------------
+//
+	PARAMETER
+	{
+		name = Check
+		type = Duration
+		
+		duration = 5s
+		preWaitText = Base Check:
+		waitingText = Checking: 
+		completionText =  Base Check complete
+	}
+// -----------------------------------------------------------------
+// END OF CONTRACT
+// -----------------------------------------------------------------
+}
+
+
+
+	
+
+
+
+	
