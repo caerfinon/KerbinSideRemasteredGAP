@@ -7,6 +7,9 @@
 //		Original Kerbin side GAP: Author - Keniamin 
 //		expression requirements: from from "Field Research" - Author - nightingale
 //	}
+//
+// Rename this to "09 - Allbasses.cfg"  It will execute aotomatically after Let's Start an Airline and complete Flight Progress for all airports
+// You can also enable it any time during to jump to the end of the Landing Rights flights. 
 // -----------------------------------------------------------------
 CONTRACT_TYPE
 {
@@ -21,7 +24,7 @@ CONTRACT_TYPE
 	description =  Set All Bases Open
 	genericDescription = Set All Bases Open
 	synopsis = Set All Bases Open
-    completedMessage = AllBasesOpen has set flightprogress to: @KSRGAP:airportProgressLimit + 1	
+    completedMessage = AllBasesOpen has set flightprogress to: 24
 	
 //Contract Limits
 	maxCompletions = 0
@@ -87,7 +90,7 @@ CONTRACT_TYPE
 		CONTRACT_COMPLETED_SUCCESS
 		{
 			type = int
-			ksrgapFlightProgress = @KSRGAP:airportProgressLimit + 1
+			ksrgapFlightProgress = 24
 			
 		}
 	}
