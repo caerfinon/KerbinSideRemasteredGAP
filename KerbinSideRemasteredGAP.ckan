@@ -4,7 +4,7 @@
     "name": "Kerbin Side Remastered GAP",
     "abstract": "Flight contract missions from KSC to bases in the Kerbin Side Remastered mod. Please check the README.md for details and dependencies",
     "author": "Caerfinon",
-    "version": "1:v3.0.2",
+    "version": "1:v3.0.3",
     "ksp_version": "1.12.5",
     "license": "MIT",
     "resources": {
@@ -53,6 +53,6 @@
             "install_to": "GameData"
         }
     ],
-    "download": "https://spacedock.info/mod/2573/Kerbin%20Side%20Remastered%20GAP/download/v3.0.1"
+    "download": "https://spacedock.info/mod/2573/Kerbin%20Side%20Remastered%20GAP/download/v3.0.3"
     "download_content_type": "application/zip"
 }
