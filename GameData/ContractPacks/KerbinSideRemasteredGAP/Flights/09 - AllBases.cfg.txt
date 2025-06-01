@@ -90,7 +90,7 @@ CONTRACT_TYPE
 		CONTRACT_COMPLETED_SUCCESS
 		{
 			type = int
-			ksrgapFlightProgress = KSRGAP:airportUpperLimit
+			ksrgapFlightProgress = @KSRGAP:airportUpperLimit
 			
 		}
 	}
